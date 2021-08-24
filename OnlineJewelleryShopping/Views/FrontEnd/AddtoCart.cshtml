@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "AddtoCart";
+    Layout = "~/Views/Shared/_FrontEnd.cshtml";
+}
+<br /><br /><br /><br />
+@if (Session["cart"] != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div><div class="col-md-8">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>QUANTITY</th>
+                            <th>PRICE</th>
+                            <th>BILL</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Session["cart"] as List<OnlineJewelleryShopping.Models.Cart>)
+                        {
+                            <tr>
+                                <td>@item.productid</td>
+                                <td>@item.productname</td>
+                                <td>@item.qty</td>
+                                <td>@item.price</td>
+                                <td>@item.bill</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>@Session["total"]</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">@Html.ActionLink("Continue Shopping>>", "Product")</td>
+                            <td >@Html.ActionLink("Checkout>>","CheckoutInfo")</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 style="color:red">Cart Is Empty..!!</h1>
+    @Html.ActionLink("GO Back", "Product")
+}<br /><br /><br /><br />

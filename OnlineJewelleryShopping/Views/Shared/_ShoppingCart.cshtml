@@ -1,0 +1,9 @@
+﻿@if (Session["cartcounter"] == null)
+{
+    <li>@Html.ActionLink("Cart", "FrontEnd", new { id = "cartitem" })</li>
+}
+else
+{
+    <li>@Html.ActionLink("Cart("+Session["cartcounter"]+")", "FrontEnd", new { id = "cartitem" })</li>
+}
+

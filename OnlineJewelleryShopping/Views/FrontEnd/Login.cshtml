@@ -1,0 +1,104 @@
+﻿@model OnlineJewelleryShopping.Models.AdminLoginMst
+
+@{
+    Layout = "~/Views/Shared/_FrontEnd.cshtml";
+}
+    @using (Html.BeginForm("Login", "FrontEnd", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<div class="form-horizontal">
+                <h4>AdminLoginMst</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>}*@
+
+        @*<div style="background-color:white;">
+            <div class="container" style="background-color:white; margin:250px">
+                <div>
+                    <h1 style="margin-left:350px">
+                        Account Login
+                    </h1><br />
+                    <form class="row">
+
+                        <div style="width:350px">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "User Name", @class = "form-control input100" } })
+
+                        </div><br />
+
+                        <div style="width:350px">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @placeholder = "Password", @class = "form-control input100" } })
+
+
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Login" class="btn btn-primary " />
+                        </div>
+
+                        <div style="color:white">
+                            @Html.ActionLink("Login As User?", "UserLogin")
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>*@
+
+
+        <main>
+            <!-- breadcrumb area start -->
+            <!-- breadcrumb area end -->
+            <!-- google map start -->
+            <!-- google map end -->
+            <!-- contact area start -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                                        <div class="col-lg-6 ">
+                                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "User Name", @class = "form-control input100" } })
+                                            <br>
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @placeholder = "Password", @class = "form-control input100" } })
+                                            <br>
+
+                                            <div style="margin-left:80px">
+                                                <input type="submit" value="Login" class="btn-primary w-50" /><br />
+                                                @Html.ActionLink("Login As User?", "UserLogin")
+
+                                            </div>
+                                        </div>
+                                   
+                        <div class="col-lg-3">
+                        </div>
+                    </div>
+                </div>
+            <!-- contact area end -->
+        </main>
+
+        <!-- Scroll to top start -->
+        <div class="scroll-top not-visible">
+            <i class="fa fa-angle-up"></i>
+        </div>
+    }

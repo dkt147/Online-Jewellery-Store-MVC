@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.StoneQltyMst>
+
+@{
+    ViewBag.Title = "StoneQlty";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>StoneQlty</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateStoneQlty")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StoneQlty_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoneQlty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.StoneQlty_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoneQlty)
+        </td>
+        <td>
+            <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.StoneQlty_Id})</button>
+            <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.StoneQlty_Id })</button>
+        </td>
+    </tr>
+}
+
+</table>

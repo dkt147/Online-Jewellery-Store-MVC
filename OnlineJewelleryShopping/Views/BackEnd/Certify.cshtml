@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.CertifyMst>
+
+@{
+    ViewBag.Title = "Certify";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>Certify</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCertify")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Certify_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certify_Type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certify_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certify_Type)
+        </td>
+        <td>
+            <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.Certify_Id })</button>
+            <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.Certify_Id })</button>
+        </td>
+    </tr>
+}
+
+</table>

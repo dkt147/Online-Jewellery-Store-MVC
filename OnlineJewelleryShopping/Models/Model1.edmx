@@ -1,0 +1,1219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminLoginMst">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandMst">
+          <Key>
+            <PropertyRef Name="Brand_Id" />
+          </Key>
+          <Property Name="Brand_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand_Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CartList">
+          <Key>
+            <PropertyRef Name="o_Id" />
+          </Key>
+          <Property Name="o_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="o_fk_pro" Type="int" Nullable="false" />
+          <Property Name="o_fk_inv" Type="int" Nullable="false" />
+          <Property Name="o_date" Type="datetime" Nullable="false" />
+          <Property Name="o_qty" Type="int" Nullable="false" />
+          <Property Name="o_bill" Type="int" Nullable="false" />
+          <Property Name="o_unitprice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatMst">
+          <Key>
+            <PropertyRef Name="Cat_Id" />
+          </Key>
+          <Property Name="Cat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertifyMst">
+          <Key>
+            <PropertyRef Name="Certify_Id" />
+          </Key>
+          <Property Name="Certify_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Certify_Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Checkout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailID" Type="varchar(max)" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zip" Type="int" />
+        </EntityType>
+        <EntityType Name="DimInfoMst">
+          <Key>
+            <PropertyRef Name="DimId" />
+          </Key>
+          <Property Name="DimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DimType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DimSubType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DimCrt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DimPrice" Type="int" Nullable="false" />
+          <Property Name="DimImg" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\HUSNAIN AWAN\SOURCE\REPOS\ONLINEJEWELLERYSHOPPING\ONLINEJEWELLERYSHOPPING\APP_DATA\DATABASE1.MDF.dbo.DimMst' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DimMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+            <PropertyRef Name="DimQlty_Id" />
+            <PropertyRef Name="DimSubType_Id" />
+            <PropertyRef Name="Dim_Crt" />
+            <PropertyRef Name="Dim_Pcs" />
+            <PropertyRef Name="Dim_Gm" />
+            <PropertyRef Name="Dim_Size" />
+            <PropertyRef Name="Dim_Rate" />
+            <PropertyRef Name="Dim_Amt" />
+          </Key>
+          <Property Name="Style_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DimQlty_Id" Type="int" Nullable="false" />
+          <Property Name="DimSubType_Id" Type="int" Nullable="false" />
+          <Property Name="Dim_Crt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dim_Pcs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dim_Gm" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dim_Size" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dim_Rate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dim_Amt" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimQltyMst">
+          <Key>
+            <PropertyRef Name="DimQlty_Id" />
+          </Key>
+          <Property Name="DimQlty_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DimQlty" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimQltySubMst">
+          <Key>
+            <PropertyRef Name="DimSubType_Id" />
+          </Key>
+          <Property Name="DimSubType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DimQlty" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoldKrtMst">
+          <Key>
+            <PropertyRef Name="GoldType_Id" />
+          </Key>
+          <Property Name="GoldType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gold_Crt" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cdate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="in_Id" />
+          </Key>
+          <Property Name="in_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="in_fk_user" Type="int" Nullable="false" />
+          <Property Name="in_date" Type="datetime" Nullable="false" />
+          <Property Name="in_totalbill" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+          </Key>
+          <Property Name="Style_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pairs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand_Id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_Id" Type="int" Nullable="false" />
+          <Property Name="Prod_Quality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Certify_Id" Type="int" Nullable="false" />
+          <Property Name="Prod_Id" Type="int" Nullable="false" />
+          <Property Name="GoldType_Id" Type="int" Nullable="false" />
+          <Property Name="Gold_Wt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Wt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Net_Gold" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wstg_Per" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wstg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tot_Gross_Wt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gold_Rate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gold_Amt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gold_Making" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Making" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Other_Making" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tot_Making" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MRP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JewelTypeMst">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Jewellery_Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Card Number" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProdMst">
+          <Key>
+            <PropertyRef Name="Prod_Id" />
+          </Key>
+          <Property Name="Prod_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prod_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prod_Img" Type="varchar(max)" Nullable="false" />
+          <Property Name="Prod_Qnt" Type="int" Nullable="false" />
+          <Property Name="Prod_Price" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\HUSNAIN AWAN\SOURCE\REPOS\ONLINEJEWELLERYSHOPPING\ONLINEJEWELLERYSHOPPING\APP_DATA\DATABASE1.MDF.dbo.StoneMst' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StoneMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+            <PropertyRef Name="StoneQlty_Id" />
+            <PropertyRef Name="Stone_Gm" />
+            <PropertyRef Name="Stone_Pcs" />
+            <PropertyRef Name="Stone_Ot" />
+            <PropertyRef Name="Stone_Rate" />
+            <PropertyRef Name="Stone_Amt" />
+          </Key>
+          <Property Name="Style_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StoneQlty_Id" Type="int" Nullable="false" />
+          <Property Name="Stone_Gm" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Pcs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Ot" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Rate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stone_Amt" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StoneQltyMst">
+          <Key>
+            <PropertyRef Name="StoneQlty_Id" />
+          </Key>
+          <Property Name="StoneQlty_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoneQlty" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRegMst">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userFname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userLname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar(max)" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mobNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailID" Type="varchar(max)" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="cdate" Type="date" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CartList__o_fk_i__3E1D39E1">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="CartList" Type="Self.CartList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="in_Id" />
+            </Principal>
+            <Dependent Role="CartList">
+              <PropertyRef Name="o_fk_inv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartList__o_fk_p__3D2915A8">
+          <End Role="ProdMst" Type="Self.ProdMst" Multiplicity="1" />
+          <End Role="CartList" Type="Self.CartList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMst">
+              <PropertyRef Name="Prod_Id" />
+            </Principal>
+            <Dependent Role="CartList">
+              <PropertyRef Name="o_fk_pro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__DimQlty___0F624AF8">
+          <End Role="DimQltyMst" Type="Self.DimQltyMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimQltyMst">
+              <PropertyRef Name="DimQlty_Id" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="DimQlty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__DimSubTy__123EB7A3">
+          <End Role="DimQltySubMst" Type="Self.DimQltySubMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimQltySubMst">
+              <PropertyRef Name="DimSubType_Id" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="DimSubType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__Style_Co__48CFD27E">
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemMst">
+              <PropertyRef Name="Style_Code" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="Style_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice__in_fk_u__3C34F16F">
+          <End Role="UserRegMst" Type="Self.UserRegMst" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRegMst">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="in_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Brand_I__02FC7413">
+          <End Role="BrandMst" Type="Self.BrandMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMst">
+              <PropertyRef Name="Brand_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Cat_Id__07C12930">
+          <End Role="CatMst" Type="Self.CatMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatMst">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Cat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Certify__0A9D95DB">
+          <End Role="CertifyMst" Type="Self.CertifyMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertifyMst">
+              <PropertyRef Name="Certify_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Certify_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__GoldTyp__151B244E">
+          <End Role="GoldKrtMst" Type="Self.GoldKrtMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoldKrtMst">
+              <PropertyRef Name="GoldType_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="GoldType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Prod_Id__1BC821DD">
+          <End Role="ProdMst" Type="Self.ProdMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMst">
+              <PropertyRef Name="Prod_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Prod_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoneMst__StoneQ__1EA48E88">
+          <End Role="StoneQltyMst" Type="Self.StoneQltyMst" Multiplicity="1" />
+          <End Role="StoneMst" Type="Self.StoneMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoneQltyMst">
+              <PropertyRef Name="StoneQlty_Id" />
+            </Principal>
+            <Dependent Role="StoneMst">
+              <PropertyRef Name="StoneQlty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoneMst__Style___34C8D9D1">
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="1" />
+          <End Role="StoneMst" Type="Self.StoneMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemMst">
+              <PropertyRef Name="Style_Code" />
+            </Principal>
+            <Dependent Role="StoneMst">
+              <PropertyRef Name="Style_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="AdminLoginMst" EntityType="Self.AdminLoginMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandMst" EntityType="Self.BrandMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartList" EntityType="Self.CartList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatMst" EntityType="Self.CatMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CertifyMst" EntityType="Self.CertifyMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Checkout" EntityType="Self.Checkout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimInfoMst" EntityType="Self.DimInfoMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimQltyMst" EntityType="Self.DimQltyMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimQltySubMst" EntityType="Self.DimQltySubMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoldKrtMst" EntityType="Self.GoldKrtMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inquiry" EntityType="Self.Inquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemMst" EntityType="Self.ItemMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JewelTypeMst" EntityType="Self.JewelTypeMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProdMst" EntityType="Self.ProdMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoneQltyMst" EntityType="Self.StoneQltyMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegMst" EntityType="Self.UserRegMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimMst" EntityType="Self.DimMst" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DimMst].[Style_Code] AS [Style_Code], 
+    [DimMst].[DimQlty_Id] AS [DimQlty_Id], 
+    [DimMst].[DimSubType_Id] AS [DimSubType_Id], 
+    [DimMst].[Dim_Crt] AS [Dim_Crt], 
+    [DimMst].[Dim_Pcs] AS [Dim_Pcs], 
+    [DimMst].[Dim_Gm] AS [Dim_Gm], 
+    [DimMst].[Dim_Size] AS [Dim_Size], 
+    [DimMst].[Dim_Rate] AS [Dim_Rate], 
+    [DimMst].[Dim_Amt] AS [Dim_Amt]
+    FROM [dbo].[DimMst] AS [DimMst]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StoneMst" EntityType="Self.StoneMst" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StoneMst].[Style_Code] AS [Style_Code], 
+    [StoneMst].[StoneQlty_Id] AS [StoneQlty_Id], 
+    [StoneMst].[Stone_Gm] AS [Stone_Gm], 
+    [StoneMst].[Stone_Pcs] AS [Stone_Pcs], 
+    [StoneMst].[Stone_Ot] AS [Stone_Ot], 
+    [StoneMst].[Stone_Rate] AS [Stone_Rate], 
+    [StoneMst].[Stone_Amt] AS [Stone_Amt]
+    FROM [dbo].[StoneMst] AS [StoneMst]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CartList__o_fk_i__3E1D39E1" Association="Self.FK__CartList__o_fk_i__3E1D39E1">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="CartList" EntitySet="CartList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartList__o_fk_p__3D2915A8" Association="Self.FK__CartList__o_fk_p__3D2915A8">
+            <End Role="ProdMst" EntitySet="ProdMst" />
+            <End Role="CartList" EntitySet="CartList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__DimQlty___0F624AF8" Association="Self.FK__DimMst__DimQlty___0F624AF8">
+            <End Role="DimQltyMst" EntitySet="DimQltyMst" />
+            <End Role="DimMst" EntitySet="DimMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__DimSubTy__123EB7A3" Association="Self.FK__DimMst__DimSubTy__123EB7A3">
+            <End Role="DimQltySubMst" EntitySet="DimQltySubMst" />
+            <End Role="DimMst" EntitySet="DimMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__Style_Co__48CFD27E" Association="Self.FK__DimMst__Style_Co__48CFD27E">
+            <End Role="ItemMst" EntitySet="ItemMst" />
+            <End Role="DimMst" EntitySet="DimMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice__in_fk_u__3C34F16F" Association="Self.FK__Invoice__in_fk_u__3C34F16F">
+            <End Role="UserRegMst" EntitySet="UserRegMst" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Brand_I__02FC7413" Association="Self.FK__ItemMst__Brand_I__02FC7413">
+            <End Role="BrandMst" EntitySet="BrandMst" />
+            <End Role="ItemMst" EntitySet="ItemMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Cat_Id__07C12930" Association="Self.FK__ItemMst__Cat_Id__07C12930">
+            <End Role="CatMst" EntitySet="CatMst" />
+            <End Role="ItemMst" EntitySet="ItemMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Certify__0A9D95DB" Association="Self.FK__ItemMst__Certify__0A9D95DB">
+            <End Role="CertifyMst" EntitySet="CertifyMst" />
+            <End Role="ItemMst" EntitySet="ItemMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__GoldTyp__151B244E" Association="Self.FK__ItemMst__GoldTyp__151B244E">
+            <End Role="GoldKrtMst" EntitySet="GoldKrtMst" />
+            <End Role="ItemMst" EntitySet="ItemMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Prod_Id__1BC821DD" Association="Self.FK__ItemMst__Prod_Id__1BC821DD">
+            <End Role="ProdMst" EntitySet="ProdMst" />
+            <End Role="ItemMst" EntitySet="ItemMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoneMst__StoneQ__1EA48E88" Association="Self.FK__StoneMst__StoneQ__1EA48E88">
+            <End Role="StoneQltyMst" EntitySet="StoneQltyMst" />
+            <End Role="StoneMst" EntitySet="StoneMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoneMst__Style___34C8D9D1" Association="Self.FK__StoneMst__Style___34C8D9D1">
+            <End Role="ItemMst" EntitySet="ItemMst" />
+            <End Role="StoneMst" EntitySet="StoneMst" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminLoginMst">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandMst">
+          <Key>
+            <PropertyRef Name="Brand_Id" />
+          </Key>
+          <Property Name="Brand_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemMsts" Relationship="Self.FK__ItemMst__Brand_I__02FC7413" FromRole="BrandMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="CartList">
+          <Key>
+            <PropertyRef Name="o_Id" />
+          </Key>
+          <Property Name="o_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="o_fk_pro" Type="Int32" Nullable="false" />
+          <Property Name="o_fk_inv" Type="Int32" Nullable="false" />
+          <Property Name="o_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="o_qty" Type="Int32" Nullable="false" />
+          <Property Name="o_bill" Type="Int32" Nullable="false" />
+          <Property Name="o_unitprice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK__CartList__o_fk_i__3E1D39E1" FromRole="CartList" ToRole="Invoice" />
+          <NavigationProperty Name="ProdMst" Relationship="Self.FK__CartList__o_fk_p__3D2915A8" FromRole="CartList" ToRole="ProdMst" />
+        </EntityType>
+        <EntityType Name="CatMst">
+          <Key>
+            <PropertyRef Name="Cat_Id" />
+          </Key>
+          <Property Name="Cat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemMsts" Relationship="Self.FK__ItemMst__Cat_Id__07C12930" FromRole="CatMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="CertifyMst">
+          <Key>
+            <PropertyRef Name="Certify_Id" />
+          </Key>
+          <Property Name="Certify_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Certify_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemMsts" Relationship="Self.FK__ItemMst__Certify__0A9D95DB" FromRole="CertifyMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="Checkout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zip" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DimInfoMst">
+          <Key>
+            <PropertyRef Name="DimId" />
+          </Key>
+          <Property Name="DimId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DimType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DimSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DimCrt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DimPrice" Type="Int32" Nullable="false" />
+          <Property Name="DimImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimQltyMst">
+          <Key>
+            <PropertyRef Name="DimQlty_Id" />
+          </Key>
+          <Property Name="DimQlty_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DimQlty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DimMsts" Relationship="Self.FK__DimMst__DimQlty___0F624AF8" FromRole="DimQltyMst" ToRole="DimMst" />
+        </EntityType>
+        <EntityType Name="DimQltySubMst">
+          <Key>
+            <PropertyRef Name="DimSubType_Id" />
+          </Key>
+          <Property Name="DimSubType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DimQlty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DimMsts" Relationship="Self.FK__DimMst__DimSubTy__123EB7A3" FromRole="DimQltySubMst" ToRole="DimMst" />
+        </EntityType>
+        <EntityType Name="GoldKrtMst">
+          <Key>
+            <PropertyRef Name="GoldType_Id" />
+          </Key>
+          <Property Name="GoldType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gold_Crt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemMsts" Relationship="Self.FK__ItemMst__GoldTyp__151B244E" FromRole="GoldKrtMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="Inquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cdate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="in_Id" />
+          </Key>
+          <Property Name="in_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="in_fk_user" Type="Int32" Nullable="false" />
+          <Property Name="in_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="in_totalbill" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CartLists" Relationship="Self.FK__CartList__o_fk_i__3E1D39E1" FromRole="Invoice" ToRole="CartList" />
+          <NavigationProperty Name="UserRegMst" Relationship="Self.FK__Invoice__in_fk_u__3C34F16F" FromRole="Invoice" ToRole="UserRegMst" />
+        </EntityType>
+        <EntityType Name="ItemMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+          </Key>
+          <Property Name="Style_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pairs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Brand_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cat_Id" Type="Int32" Nullable="false" />
+          <Property Name="Prod_Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Certify_Id" Type="Int32" Nullable="false" />
+          <Property Name="Prod_Id" Type="Int32" Nullable="false" />
+          <Property Name="GoldType_Id" Type="Int32" Nullable="false" />
+          <Property Name="Gold_Wt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Wt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Net_Gold" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wstg_Per" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wstg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tot_Gross_Wt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gold_Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gold_Amt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gold_Making" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Making" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Other_Making" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tot_Making" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MRP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BrandMst" Relationship="Self.FK__ItemMst__Brand_I__02FC7413" FromRole="ItemMst" ToRole="BrandMst" />
+          <NavigationProperty Name="CatMst" Relationship="Self.FK__ItemMst__Cat_Id__07C12930" FromRole="ItemMst" ToRole="CatMst" />
+          <NavigationProperty Name="CertifyMst" Relationship="Self.FK__ItemMst__Certify__0A9D95DB" FromRole="ItemMst" ToRole="CertifyMst" />
+          <NavigationProperty Name="GoldKrtMst" Relationship="Self.FK__ItemMst__GoldTyp__151B244E" FromRole="ItemMst" ToRole="GoldKrtMst" />
+          <NavigationProperty Name="DimMsts" Relationship="Self.FK__DimMst__Style_Co__48CFD27E" FromRole="ItemMst" ToRole="DimMst" />
+          <NavigationProperty Name="ProdMst" Relationship="Self.FK__ItemMst__Prod_Id__1BC821DD" FromRole="ItemMst" ToRole="ProdMst" />
+          <NavigationProperty Name="StoneMsts" Relationship="Self.FK__StoneMst__Style___34C8D9D1" FromRole="ItemMst" ToRole="StoneMst" />
+        </EntityType>
+        <EntityType Name="JewelTypeMst">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Jewellery_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProdMst">
+          <Key>
+            <PropertyRef Name="Prod_Id" />
+          </Key>
+          <Property Name="Prod_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prod_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prod_Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prod_Qnt" Type="Int32" Nullable="false" />
+          <Property Name="Prod_Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CartLists" Relationship="Self.FK__CartList__o_fk_p__3D2915A8" FromRole="ProdMst" ToRole="CartList" />
+          <NavigationProperty Name="ItemMsts" Relationship="Self.FK__ItemMst__Prod_Id__1BC821DD" FromRole="ProdMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="StoneQltyMst">
+          <Key>
+            <PropertyRef Name="StoneQlty_Id" />
+          </Key>
+          <Property Name="StoneQlty_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoneQlty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StoneMsts" Relationship="Self.FK__StoneMst__StoneQ__1EA48E88" FromRole="StoneQltyMst" ToRole="StoneMst" />
+        </EntityType>
+        <EntityType Name="UserRegMst">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userFname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userLname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mobNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emailID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__in_fk_u__3C34F16F" FromRole="UserRegMst" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="DimMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+            <PropertyRef Name="DimQlty_Id" />
+            <PropertyRef Name="DimSubType_Id" />
+            <PropertyRef Name="Dim_Crt" />
+            <PropertyRef Name="Dim_Pcs" />
+            <PropertyRef Name="Dim_Gm" />
+            <PropertyRef Name="Dim_Size" />
+            <PropertyRef Name="Dim_Rate" />
+            <PropertyRef Name="Dim_Amt" />
+          </Key>
+          <Property Name="Style_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DimQlty_Id" Type="Int32" Nullable="false" />
+          <Property Name="DimSubType_Id" Type="Int32" Nullable="false" />
+          <Property Name="Dim_Crt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dim_Pcs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dim_Gm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dim_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dim_Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dim_Amt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DimQltyMst" Relationship="Self.FK__DimMst__DimQlty___0F624AF8" FromRole="DimMst" ToRole="DimQltyMst" />
+          <NavigationProperty Name="DimQltySubMst" Relationship="Self.FK__DimMst__DimSubTy__123EB7A3" FromRole="DimMst" ToRole="DimQltySubMst" />
+          <NavigationProperty Name="ItemMst" Relationship="Self.FK__DimMst__Style_Co__48CFD27E" FromRole="DimMst" ToRole="ItemMst" />
+        </EntityType>
+        <EntityType Name="StoneMst">
+          <Key>
+            <PropertyRef Name="Style_Code" />
+            <PropertyRef Name="StoneQlty_Id" />
+            <PropertyRef Name="Stone_Gm" />
+            <PropertyRef Name="Stone_Pcs" />
+            <PropertyRef Name="Stone_Ot" />
+            <PropertyRef Name="Stone_Rate" />
+            <PropertyRef Name="Stone_Amt" />
+          </Key>
+          <Property Name="Style_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StoneQlty_Id" Type="Int32" Nullable="false" />
+          <Property Name="Stone_Gm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Pcs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Ot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stone_Amt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ItemMst" Relationship="Self.FK__StoneMst__Style___34C8D9D1" FromRole="StoneMst" ToRole="ItemMst" />
+          <NavigationProperty Name="StoneQltyMst" Relationship="Self.FK__StoneMst__StoneQ__1EA48E88" FromRole="StoneMst" ToRole="StoneQltyMst" />
+        </EntityType>
+        <Association Name="FK__ItemMst__Brand_I__02FC7413">
+          <End Role="BrandMst" Type="Self.BrandMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMst">
+              <PropertyRef Name="Brand_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartList__o_fk_i__3E1D39E1">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="CartList" Type="Self.CartList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="in_Id" />
+            </Principal>
+            <Dependent Role="CartList">
+              <PropertyRef Name="o_fk_inv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartList__o_fk_p__3D2915A8">
+          <End Role="ProdMst" Type="Self.ProdMst" Multiplicity="1" />
+          <End Role="CartList" Type="Self.CartList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMst">
+              <PropertyRef Name="Prod_Id" />
+            </Principal>
+            <Dependent Role="CartList">
+              <PropertyRef Name="o_fk_pro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Cat_Id__07C12930">
+          <End Role="CatMst" Type="Self.CatMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatMst">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Cat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Certify__0A9D95DB">
+          <End Role="CertifyMst" Type="Self.CertifyMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertifyMst">
+              <PropertyRef Name="Certify_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Certify_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__DimQlty___0F624AF8">
+          <End Role="DimQltyMst" Type="Self.DimQltyMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimQltyMst">
+              <PropertyRef Name="DimQlty_Id" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="DimQlty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__DimSubTy__123EB7A3">
+          <End Role="DimQltySubMst" Type="Self.DimQltySubMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimQltySubMst">
+              <PropertyRef Name="DimSubType_Id" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="DimSubType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__GoldTyp__151B244E">
+          <End Role="GoldKrtMst" Type="Self.GoldKrtMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoldKrtMst">
+              <PropertyRef Name="GoldType_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="GoldType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice__in_fk_u__3C34F16F">
+          <End Role="UserRegMst" Type="Self.UserRegMst" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRegMst">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="in_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DimMst__Style_Co__48CFD27E">
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="1" />
+          <End Role="DimMst" Type="Self.DimMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemMst">
+              <PropertyRef Name="Style_Code" />
+            </Principal>
+            <Dependent Role="DimMst">
+              <PropertyRef Name="Style_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ItemMst__Prod_Id__1BC821DD">
+          <End Role="ProdMst" Type="Self.ProdMst" Multiplicity="1" />
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMst">
+              <PropertyRef Name="Prod_Id" />
+            </Principal>
+            <Dependent Role="ItemMst">
+              <PropertyRef Name="Prod_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoneMst__Style___34C8D9D1">
+          <End Role="ItemMst" Type="Self.ItemMst" Multiplicity="1" />
+          <End Role="StoneMst" Type="Self.StoneMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemMst">
+              <PropertyRef Name="Style_Code" />
+            </Principal>
+            <Dependent Role="StoneMst">
+              <PropertyRef Name="Style_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StoneMst__StoneQ__1EA48E88">
+          <End Role="StoneQltyMst" Type="Self.StoneQltyMst" Multiplicity="1" />
+          <End Role="StoneMst" Type="Self.StoneMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StoneQltyMst">
+              <PropertyRef Name="StoneQlty_Id" />
+            </Principal>
+            <Dependent Role="StoneMst">
+              <PropertyRef Name="StoneQlty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminLoginMsts" EntityType="Self.AdminLoginMst" />
+          <EntitySet Name="BrandMsts" EntityType="Self.BrandMst" />
+          <EntitySet Name="CartLists" EntityType="Self.CartList" />
+          <EntitySet Name="CatMsts" EntityType="Self.CatMst" />
+          <EntitySet Name="CertifyMsts" EntityType="Self.CertifyMst" />
+          <EntitySet Name="Checkouts" EntityType="Self.Checkout" />
+          <EntitySet Name="DimInfoMsts" EntityType="Self.DimInfoMst" />
+          <EntitySet Name="DimQltyMsts" EntityType="Self.DimQltyMst" />
+          <EntitySet Name="DimQltySubMsts" EntityType="Self.DimQltySubMst" />
+          <EntitySet Name="GoldKrtMsts" EntityType="Self.GoldKrtMst" />
+          <EntitySet Name="Inquiries" EntityType="Self.Inquiry" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="ItemMsts" EntityType="Self.ItemMst" />
+          <EntitySet Name="JewelTypeMsts" EntityType="Self.JewelTypeMst" />
+          <EntitySet Name="ProdMsts" EntityType="Self.ProdMst" />
+          <EntitySet Name="StoneQltyMsts" EntityType="Self.StoneQltyMst" />
+          <EntitySet Name="UserRegMsts" EntityType="Self.UserRegMst" />
+          <EntitySet Name="DimMsts" EntityType="Self.DimMst" />
+          <EntitySet Name="StoneMsts" EntityType="Self.StoneMst" />
+          <AssociationSet Name="FK__ItemMst__Brand_I__02FC7413" Association="Self.FK__ItemMst__Brand_I__02FC7413">
+            <End Role="BrandMst" EntitySet="BrandMsts" />
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartList__o_fk_i__3E1D39E1" Association="Self.FK__CartList__o_fk_i__3E1D39E1">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="CartList" EntitySet="CartLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartList__o_fk_p__3D2915A8" Association="Self.FK__CartList__o_fk_p__3D2915A8">
+            <End Role="ProdMst" EntitySet="ProdMsts" />
+            <End Role="CartList" EntitySet="CartLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Cat_Id__07C12930" Association="Self.FK__ItemMst__Cat_Id__07C12930">
+            <End Role="CatMst" EntitySet="CatMsts" />
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Certify__0A9D95DB" Association="Self.FK__ItemMst__Certify__0A9D95DB">
+            <End Role="CertifyMst" EntitySet="CertifyMsts" />
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__DimQlty___0F624AF8" Association="Self.FK__DimMst__DimQlty___0F624AF8">
+            <End Role="DimQltyMst" EntitySet="DimQltyMsts" />
+            <End Role="DimMst" EntitySet="DimMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__DimSubTy__123EB7A3" Association="Self.FK__DimMst__DimSubTy__123EB7A3">
+            <End Role="DimQltySubMst" EntitySet="DimQltySubMsts" />
+            <End Role="DimMst" EntitySet="DimMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__GoldTyp__151B244E" Association="Self.FK__ItemMst__GoldTyp__151B244E">
+            <End Role="GoldKrtMst" EntitySet="GoldKrtMsts" />
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice__in_fk_u__3C34F16F" Association="Self.FK__Invoice__in_fk_u__3C34F16F">
+            <End Role="UserRegMst" EntitySet="UserRegMsts" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DimMst__Style_Co__48CFD27E" Association="Self.FK__DimMst__Style_Co__48CFD27E">
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+            <End Role="DimMst" EntitySet="DimMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemMst__Prod_Id__1BC821DD" Association="Self.FK__ItemMst__Prod_Id__1BC821DD">
+            <End Role="ProdMst" EntitySet="ProdMsts" />
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoneMst__Style___34C8D9D1" Association="Self.FK__StoneMst__Style___34C8D9D1">
+            <End Role="ItemMst" EntitySet="ItemMsts" />
+            <End Role="StoneMst" EntitySet="StoneMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StoneMst__StoneQ__1EA48E88" Association="Self.FK__StoneMst__StoneQ__1EA48E88">
+            <End Role="StoneQltyMst" EntitySet="StoneQltyMsts" />
+            <End Role="StoneMst" EntitySet="StoneMsts" />
+          </AssociationSet>
+          <EntitySet Name="Payments" EntityType="Database1Model.Payment" />
+        </EntityContainer>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Card_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities6">
+          <EntitySetMapping Name="AdminLoginMsts">
+            <EntityTypeMapping TypeName="Database1Model.AdminLoginMst">
+              <MappingFragment StoreEntitySet="AdminLoginMst">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandMsts">
+            <EntityTypeMapping TypeName="Database1Model.BrandMst">
+              <MappingFragment StoreEntitySet="BrandMst">
+                <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+                <ScalarProperty Name="Brand_Type" ColumnName="Brand_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartLists">
+            <EntityTypeMapping TypeName="Database1Model.CartList">
+              <MappingFragment StoreEntitySet="CartList">
+                <ScalarProperty Name="o_Id" ColumnName="o_Id" />
+                <ScalarProperty Name="o_fk_pro" ColumnName="o_fk_pro" />
+                <ScalarProperty Name="o_fk_inv" ColumnName="o_fk_inv" />
+                <ScalarProperty Name="o_date" ColumnName="o_date" />
+                <ScalarProperty Name="o_qty" ColumnName="o_qty" />
+                <ScalarProperty Name="o_bill" ColumnName="o_bill" />
+                <ScalarProperty Name="o_unitprice" ColumnName="o_unitprice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatMsts">
+            <EntityTypeMapping TypeName="Database1Model.CatMst">
+              <MappingFragment StoreEntitySet="CatMst">
+                <ScalarProperty Name="Cat_Id" ColumnName="Cat_Id" />
+                <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertifyMsts">
+            <EntityTypeMapping TypeName="Database1Model.CertifyMst">
+              <MappingFragment StoreEntitySet="CertifyMst">
+                <ScalarProperty Name="Certify_Id" ColumnName="Certify_Id" />
+                <ScalarProperty Name="Certify_Type" ColumnName="Certify_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checkouts">
+            <EntityTypeMapping TypeName="Database1Model.Checkout">
+              <MappingFragment StoreEntitySet="Checkout">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimInfoMsts">
+            <EntityTypeMapping TypeName="Database1Model.DimInfoMst">
+              <MappingFragment StoreEntitySet="DimInfoMst">
+                <ScalarProperty Name="DimId" ColumnName="DimId" />
+                <ScalarProperty Name="DimType" ColumnName="DimType" />
+                <ScalarProperty Name="DimSubType" ColumnName="DimSubType" />
+                <ScalarProperty Name="DimCrt" ColumnName="DimCrt" />
+                <ScalarProperty Name="DimPrice" ColumnName="DimPrice" />
+                <ScalarProperty Name="DimImg" ColumnName="DimImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimQltyMsts">
+            <EntityTypeMapping TypeName="Database1Model.DimQltyMst">
+              <MappingFragment StoreEntitySet="DimQltyMst">
+                <ScalarProperty Name="DimQlty_Id" ColumnName="DimQlty_Id" />
+                <ScalarProperty Name="DimQlty" ColumnName="DimQlty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimQltySubMsts">
+            <EntityTypeMapping TypeName="Database1Model.DimQltySubMst">
+              <MappingFragment StoreEntitySet="DimQltySubMst">
+                <ScalarProperty Name="DimSubType_Id" ColumnName="DimSubType_Id" />
+                <ScalarProperty Name="DimQlty" ColumnName="DimQlty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoldKrtMsts">
+            <EntityTypeMapping TypeName="Database1Model.GoldKrtMst">
+              <MappingFragment StoreEntitySet="GoldKrtMst">
+                <ScalarProperty Name="GoldType_Id" ColumnName="GoldType_Id" />
+                <ScalarProperty Name="Gold_Crt" ColumnName="Gold_Crt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inquiries">
+            <EntityTypeMapping TypeName="Database1Model.Inquiry">
+              <MappingFragment StoreEntitySet="Inquiry">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Cdate" ColumnName="Cdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="Database1Model.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="in_Id" ColumnName="in_Id" />
+                <ScalarProperty Name="in_fk_user" ColumnName="in_fk_user" />
+                <ScalarProperty Name="in_date" ColumnName="in_date" />
+                <ScalarProperty Name="in_totalbill" ColumnName="in_totalbill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemMsts">
+            <EntityTypeMapping TypeName="Database1Model.ItemMst">
+              <MappingFragment StoreEntitySet="ItemMst">
+                <ScalarProperty Name="Style_Code" ColumnName="Style_Code" />
+                <ScalarProperty Name="Pairs" ColumnName="Pairs" />
+                <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Cat_Id" ColumnName="Cat_Id" />
+                <ScalarProperty Name="Prod_Quality" ColumnName="Prod_Quality" />
+                <ScalarProperty Name="Certify_Id" ColumnName="Certify_Id" />
+                <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+                <ScalarProperty Name="GoldType_Id" ColumnName="GoldType_Id" />
+                <ScalarProperty Name="Gold_Wt" ColumnName="Gold_Wt" />
+                <ScalarProperty Name="Stone_Wt" ColumnName="Stone_Wt" />
+                <ScalarProperty Name="Net_Gold" ColumnName="Net_Gold" />
+                <ScalarProperty Name="Wstg_Per" ColumnName="Wstg_Per" />
+                <ScalarProperty Name="Wstg" ColumnName="Wstg" />
+                <ScalarProperty Name="Tot_Gross_Wt" ColumnName="Tot_Gross_Wt" />
+                <ScalarProperty Name="Gold_Rate" ColumnName="Gold_Rate" />
+                <ScalarProperty Name="Gold_Amt" ColumnName="Gold_Amt" />
+                <ScalarProperty Name="Gold_Making" ColumnName="Gold_Making" />
+                <ScalarProperty Name="Stone_Making" ColumnName="Stone_Making" />
+                <ScalarProperty Name="Other_Making" ColumnName="Other_Making" />
+                <ScalarProperty Name="Tot_Making" ColumnName="Tot_Making" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JewelTypeMsts">
+            <EntityTypeMapping TypeName="Database1Model.JewelTypeMst">
+              <MappingFragment StoreEntitySet="JewelTypeMst">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Jewellery_Type" ColumnName="Jewellery_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdMsts">
+            <EntityTypeMapping TypeName="Database1Model.ProdMst">
+              <MappingFragment StoreEntitySet="ProdMst">
+                <ScalarProperty Name="Prod_Id" ColumnName="Prod_Id" />
+                <ScalarProperty Name="Prod_Type" ColumnName="Prod_Type" />
+                <ScalarProperty Name="Prod_Img" ColumnName="Prod_Img" />
+                <ScalarProperty Name="Prod_Qnt" ColumnName="Prod_Qnt" />
+                <ScalarProperty Name="Prod_Price" ColumnName="Prod_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoneQltyMsts">
+            <EntityTypeMapping TypeName="Database1Model.StoneQltyMst">
+              <MappingFragment StoreEntitySet="StoneQltyMst">
+                <ScalarProperty Name="StoneQlty_Id" ColumnName="StoneQlty_Id" />
+                <ScalarProperty Name="StoneQlty" ColumnName="StoneQlty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegMsts">
+            <EntityTypeMapping TypeName="Database1Model.UserRegMst">
+              <MappingFragment StoreEntitySet="UserRegMst">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userFname" ColumnName="userFname" />
+                <ScalarProperty Name="userLname" ColumnName="userLname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="mobNo" ColumnName="mobNo" />
+                <ScalarProperty Name="emailID" ColumnName="emailID" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="cdate" ColumnName="cdate" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimMsts">
+            <EntityTypeMapping TypeName="Database1Model.DimMst">
+              <MappingFragment StoreEntitySet="DimMst">
+                <ScalarProperty Name="Style_Code" ColumnName="Style_Code" />
+                <ScalarProperty Name="DimQlty_Id" ColumnName="DimQlty_Id" />
+                <ScalarProperty Name="DimSubType_Id" ColumnName="DimSubType_Id" />
+                <ScalarProperty Name="Dim_Crt" ColumnName="Dim_Crt" />
+                <ScalarProperty Name="Dim_Pcs" ColumnName="Dim_Pcs" />
+                <ScalarProperty Name="Dim_Gm" ColumnName="Dim_Gm" />
+                <ScalarProperty Name="Dim_Size" ColumnName="Dim_Size" />
+                <ScalarProperty Name="Dim_Rate" ColumnName="Dim_Rate" />
+                <ScalarProperty Name="Dim_Amt" ColumnName="Dim_Amt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoneMsts">
+            <EntityTypeMapping TypeName="Database1Model.StoneMst">
+              <MappingFragment StoreEntitySet="StoneMst">
+                <ScalarProperty Name="Style_Code" ColumnName="Style_Code" />
+                <ScalarProperty Name="StoneQlty_Id" ColumnName="StoneQlty_Id" />
+                <ScalarProperty Name="Stone_Gm" ColumnName="Stone_Gm" />
+                <ScalarProperty Name="Stone_Pcs" ColumnName="Stone_Pcs" />
+                <ScalarProperty Name="Stone_Ot" ColumnName="Stone_Ot" />
+                <ScalarProperty Name="Stone_Rate" ColumnName="Stone_Rate" />
+                <ScalarProperty Name="Stone_Amt" ColumnName="Stone_Amt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Database1Model.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Card_Number" ColumnName="Card Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

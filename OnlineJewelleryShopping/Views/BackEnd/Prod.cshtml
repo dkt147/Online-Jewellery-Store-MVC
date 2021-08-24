@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.ProdMst>
+
+@{
+    ViewBag.Title = "Prod";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Prod_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prod_Img)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prod_Type)
+        </td>
+        <td>
+            <img src="@Url.Content( item.Prod_Img)" width="50px" height="50px"/>
+        </td>
+        <td>
+            <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.Prod_Id })</button>
+            <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.Prod_Id })</button>
+        </td>
+    </tr>
+}
+
+</table>

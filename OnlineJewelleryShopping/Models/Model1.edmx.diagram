@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3b975b97cf4424ba712a748b863bd04" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Database1Model.AdminLoginMst" Width="1.5" PointX="8.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.BrandMst" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.CartList" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.CatMst" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.CertifyMst" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Checkout" Width="1.5" PointX="10.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.DimInfoMst" Width="1.5" PointX="11.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.DimQltyMst" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.DimQltySubMst" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.GoldKrtMst" Width="1.5" PointX="3.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Inquiry" Width="1.5" PointX="12.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Invoice" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.ItemMst" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.JewelTypeMst" Width="1.5" PointX="8.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.ProdMst" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.StoneQltyMst" Width="1.5" PointX="9" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.UserRegMst" Width="1.5" PointX="1.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.DimMst" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.StoneMst" Width="1.5" PointX="11.25" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK__ItemMst__Brand_I__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__CartList__o_fk_i__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__CartList__o_fk_p__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__ItemMst__Cat_Id__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__ItemMst__Certify__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__DimMst__DimQlty___0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__DimMst__DimSubTy__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__ItemMst__GoldTyp__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__Invoice__in_fk_u__3C34F16F" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__DimMst__Style_Co__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__ItemMst__Prod_Id__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__StoneMst__Style___34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK__StoneMst__StoneQ__1EA48E88" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Database1Model.Payment" Width="1.5" PointX="13.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

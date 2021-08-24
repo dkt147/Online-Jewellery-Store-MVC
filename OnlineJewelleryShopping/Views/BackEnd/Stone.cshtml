@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.StoneMst>
+
+@{
+    ViewBag.Title = "Stone";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>Stone</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateStone")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemMst.Pairs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoneQltyMst.StoneQlty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemMst.Pairs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoneQltyMst.StoneQlty)
+        </td>
+    </tr>
+}
+
+</table>

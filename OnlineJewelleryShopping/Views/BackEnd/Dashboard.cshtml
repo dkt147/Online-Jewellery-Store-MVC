@@ -1,0 +1,93 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.UserRegMst>
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+                                                                        <p>
+                                                                            <button style="text-decoration:none; color:white;" class="btn btn-primary">@Html.ActionLink("Add New", "CreateDashboard")</button>
+                                                                        </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userFname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userLname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mobNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.emailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userFname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userLname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.userId })</button>
+                <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.userId })</button>
+            </td>
+        </tr>
+        }
+
+    </table>
+

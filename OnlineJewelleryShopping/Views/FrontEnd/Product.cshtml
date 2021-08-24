@@ -1,0 +1,244 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.ProdMst>
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_FrontEnd.cshtml";
+}
+<h1>
+    @Session["msg3"]
+</h1>
+<main>
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-11">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">shop</li>&nbsp;
+                                @if (Session["total"] != null)
+	{
+                                <h6>  / Total Amount: @Session["total"]</h6>
+	}
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-cart-plus"> @Html.ActionLink("Cart", "Addtocart")</i> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area end -->
+    <!-- page main wrapper start -->
+    <div class="shop-main-wrapper section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- sidebar area start -->
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <aside class="sidebar-wrapper">
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <h5 class="sidebar-title">categories</h5>
+
+                        </div>
+                        <!-- single sidebar end -->
+                        <!-- single sidebar start -->
+                        <!-- single sidebar end -->
+                        <!-- single sidebar start -->
+                        <!-- single sidebar end -->
+                        <!-- single sidebar start -->
+                        <div class="sidebar-banner">
+                            <div class="img-container">
+                                <a href="#">
+                                    <img src="~/assets/img/banner/sidebar-banner.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+                    </aside>
+                </div>
+
+                <!-- sidebar area end -->
+                <!-- shop main wrapper start -->
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="shop-product-wrapper">
+                        <!-- shop product top wrap start -->
+                        <div class="shop-top-bar">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 col-md-6 order-2 order-md-1">
+                                    @using (Html.BeginForm("Product", "FrontEnd", FormMethod.Post))
+                                    {
+
+                                        <div class="header-search-container">
+                                            @Html.TextBox("search")<input type="submit" value="search">
+
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- shop product top wrap start -->
+                    <!-- product item list wrapper start -->
+                    <div class="shop-product-wrap grid-view row mbn-30">
+                        <!-- product single item start -->
+
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="col-md-4 col-sm-6">
+                                <!-- product grid start -->
+                                <div class="product-item">
+                                    <figure class="product-thumb">
+                                        <img src="@Url.Content(item.Prod_Img)" width="50px" height="300px" />
+                                        <div class="product-badge">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>10%</span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                            <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                        </div>
+
+                                    </figure>
+                                    <div class="product-caption text-center">
+                                        <div class="product-identity">
+                                            <a class="btn btn-primary btn sm" href="@Url.Action("Add", new { @id = item.Prod_Id })">Add To Cart</a>
+                                        </div>
+                                        <div class="product-identity">
+                                            <p class="manufacturer-name"><a href="product-details.html">Platinum</a></p>
+                                        </div>
+                                        <ul class="color-categories">
+                                            <li>
+                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-darktan" href="#" title="Darktan"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-grey" href="#" title="Grey"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-brown" href="#" title="Brown"></a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="product-name">
+                                            @Html.DisplayFor(modelItem => item.Prod_Type)
+                                        </h6>
+
+                                        <p>Quantity:   @Html.DisplayFor(modelItem => item.Prod_Qnt)</p>
+                                        <br />
+                                        <div class="price-box">
+                                            <span class="price-regular">
+                                                @Html.DisplayFor(modelItem => item.Prod_Price)
+                                            </span>
+                                            <span class="price-old"><del>$70.00</del></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid end -->
+                                <!-- product list item end -->
+                                <div class="product-list-item">
+                                    <figure class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img class="pri-img" src="~/assets/img/product/product-1.jpg" alt="product">
+                                            <img class="sec-img" src="~/assets/img/product/product-18.jpg" alt="product">
+                                        </a>
+                                        <div class="product-badge">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>10%</span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                            <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"><span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                        </div>
+
+                                    </figure>
+                                    <div class="product-content-list">
+                                        <div class="product-identity">
+                                            <a href="#" class="btn btn-primary" data-id="@item.Prod_Id" id="btnaddtocart" onclick="Addtocart('NABEl')">ADD</a>
+                                        </div>
+                                        <div class="manufacturer-name">
+                                            <a href="product-details.html">Platinum</a>
+                                        </div>
+                                        <ul class="color-categories">
+                                            <li>
+                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-darktan" href="#" title="Darktan"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-grey" href="#" title="Grey"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-brown" href="#" title="Brown"></a>
+                                            </li>
+                                        </ul>
+
+                                        <h5 class="product-name"><a href="product-details.html">Perfect Diamond Jewelry</a></h5>
+                                        <div class="price-box">
+                                            <span class="price-regular">$50.00</span>
+                                            <span class="price-old"><del>$29.99</del></span>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis
+                                            quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
+                                            rem, accusantium adipisci officia eaque.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- product list item end -->
+                            </div>
+
+                        }
+
+                    </div>
+                    <!-- product item list wrapper end -->
+                    <!-- start pagination area -->
+                    <div class="paginatoin-area text-center">
+                        <ul class="pagination-box">
+                            <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- end pagination area -->
+                </div>
+            </div>
+            <!-- shop main wrapper end -->
+        </div>
+    </div>
+    <!-- page main wrapper end -->
+</main>
+
+<!-- Scroll to top start -->
+<div class="scroll-top not-visible">
+    <i class="fa fa-angle-up"></i>
+</div>
+

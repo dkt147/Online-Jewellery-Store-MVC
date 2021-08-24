@@ -1,0 +1,19 @@
+﻿@model OnlineJewelleryShopping.Models.ProdMst
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_FrontEnd.cshtml";
+}
+
+<h2>Add</h2>
+
+@using (Html.BeginForm("Add","FrontEnd",FormMethod.Post)) 
+{
+    
+    <img style="width:150px; height:150px;" src="@Url.Content(Model.Prod_Img)" /><br />
+    <h1>@Model.Prod_Type</h1>
+    <h2>@Model.Prod_Price</h2>
+
+    <input type="number" name="qty" value="1" id="qty" />
+    <input type="submit" value="Submit" class="btn btn-default" />
+}

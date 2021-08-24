@@ -1,0 +1,51 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.DimMst>
+
+@{
+    ViewBag.Title = "Dim";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>Dim</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateDim")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DimQltyMst.DimQlty_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimQltyMst.DimQlty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DimQltySubMst.DimQlty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemMst.Pairs)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimQltyMst.DimQlty_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimQltyMst.DimQlty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DimQltySubMst.DimQlty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemMst.Pairs)
+        </td>
+        <td>
+            <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.DimQlty_Id })</button>
+            <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.DimQlty_Id })</button>
+        </td>
+    </tr>
+}
+
+</table>

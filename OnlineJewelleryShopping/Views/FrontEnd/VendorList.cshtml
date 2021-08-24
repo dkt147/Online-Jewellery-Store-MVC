@@ -1,0 +1,75 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.ProdMst>
+
+        @{
+            ViewBag.Title = "Prod";
+            Layout = "~/Views/Shared/_FrontEnd.cshtml";
+        }
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-10">
+
+                    <h1>
+                        <strong>
+                            @Html.ActionLink("Create New", "VendorCreate")
+                        </strong>
+                    </h1><br />
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prod_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prod_Type)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prod_Img)
+                            </th>
+                            <th></th>
+                        </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_Type)
+            </td>
+            <td>
+                <img src="@Url.Content( item.Prod_Img)" width="50px" ; height="50px" ; />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Prod_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Prod_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Prod_Id })
+            </td>
+        </tr>
+    }
+
+                    </table>
+
+                </div><div class="col-md-1"></div>
+            </div>
+        </div>
+@*@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prod_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prod_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prod_Img)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Prod_Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Prod_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Prod_Id })
+        </td>
+    </tr>
+}*@

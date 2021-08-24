@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineJewelleryShopping.Models.CatMst>
+
+@{
+    ViewBag.Title = "Cat";
+    Layout = "~/Views/Shared/_BackEnd.cshtml";
+}
+
+<h2>Cat</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCat")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cat_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cat_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cat_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cat_Name)
+        </td>
+        <td>
+            <button class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.Cat_Id })</button>
+            <button class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.Cat_Id })</button>
+        </td>
+    </tr>
+}
+
+</table>
